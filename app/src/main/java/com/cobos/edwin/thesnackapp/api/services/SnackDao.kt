@@ -9,12 +9,12 @@ import io.reactivex.Single
 @Dao
 interface SnackDao {
 
-    @Query("SELECT * FROM Snack WHERE is_veggie IN (:options)")
-    fun findSnacksByType(options: BooleanArray): Single<List<Snack>>
-
     @Query("SELECT * FROM Snack")
     fun getAllSnacks(): Single<List<Snack>>
 
     @Insert
     fun insertSnacks(snacks: List<Snack>)
+
+    @Insert
+    fun insertSnack(snack: Snack)
 }

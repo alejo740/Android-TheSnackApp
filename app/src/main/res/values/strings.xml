@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">The Snack App</string>
+    <string name="non_veggie">Non-Veggie</string>
+    <string name="veggie">Veggie</string>
+    <string name="submit">Submit</string>
+    <string name="add_button">Add</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="snack_name">Snack Name</string>
+    <string name="snack_saved_success">New Snack Saved!</string>
 </resources>

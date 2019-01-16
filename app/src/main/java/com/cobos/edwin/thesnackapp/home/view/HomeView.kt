@@ -8,4 +8,7 @@ interface HomeView {
 
     fun showSnackbarError(message: String)
 
+    fun updateSnackList()
+
+    fun cleanSnackList()
 }

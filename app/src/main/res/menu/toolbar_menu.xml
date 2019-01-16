@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+            android:title="@string/add_button"
+            android:id="@+id/add_snack"
+            android:icon="@android:drawable/stat_notify_more"
+            tools:ignore="AppCompatResource"
+            android:showAsAction="always"/>
+
+</menu>
