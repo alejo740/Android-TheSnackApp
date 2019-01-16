@@ -10,7 +10,7 @@ import io.reactivex.Single
 interface SnackDao {
 
     @Query("SELECT * FROM Snack WHERE is_veggie IN (:options)")
-    fun findSnacksByType(options: IntArray): Single<List<Snack>>
+    fun findSnacksByType(options: BooleanArray): Single<List<Snack>>
 
     @Query("SELECT * FROM Snack")
     fun getAllSnacks(): Single<List<Snack>>

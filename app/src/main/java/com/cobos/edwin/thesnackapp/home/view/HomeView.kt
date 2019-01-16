@@ -4,7 +4,7 @@ import com.cobos.edwin.thesnackapp.api.models.Snack
 
 interface HomeView {
 
-    fun updateProductList(product: List<Snack>)
+    fun updateSnackList(snack: Snack)
 
     fun showSnackbarError(message: String)
 
