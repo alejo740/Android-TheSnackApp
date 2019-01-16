@@ -1,4 +1,4 @@
-package com.cobos.edwin.thesnackapp.db
+package com.cobos.edwin.thesnackapp.api.models
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
