@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.CheckedTextView
 import com.cobos.edwin.thesnackapp.R
 import com.cobos.edwin.thesnackapp.api.models.Snack
 import kotlinx.android.synthetic.main.snack_item.view.*
-import java.lang.StringBuilder
 
 
 class SnackListAdapter() :
@@ -45,10 +43,19 @@ class SnackListAdapter() :
         notifyDataSetChanged()
     }
 
+    fun clearSelectedItems() {
+        itemsSelectedArray.clear()
+        notifyDataSetChanged()
+    }
+
     fun setSnacks(snacks: List<Snack>) {
         items.clear()
         items.addAll(snacks)
         notifyDataSetChanged()
+    }
+
+    fun getSelectedSnacks() : Array<String> {
+        return items.filter { x -> itemsSelectedArray.get(x.id) }.map { x -> StringBuilder().append(x.name).append(" - ").append(x.isVeggie).toString()}.toList().toTypedArray()
     }
 
     class SnackViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
@@ -60,6 +67,8 @@ class SnackListAdapter() :
             item.text = StringBuilder().append(snack.id).append(". ").append(snack.name).toString()
 
             item.isChecked = st
+
+            //TODO: Change Color
 
             item.setOnClickListener {
                 Log.i("ROOM", ":" + snack.id)

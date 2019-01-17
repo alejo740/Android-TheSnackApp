@@ -12,6 +12,7 @@ import com.cobos.edwin.thesnackapp.R
 import com.cobos.edwin.thesnackapp.api.models.Snack
 import com.cobos.edwin.thesnackapp.app.App
 import com.cobos.edwin.thesnackapp.customs.AddSnackDialog
+import com.cobos.edwin.thesnackapp.customs.SummaryDialog
 import com.cobos.edwin.thesnackapp.home.presenter.HomePresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity(), HomeView, AddSnackDialog.SnackDialogLi
 
     private val addNewSnackDialog = AddSnackDialog()
 
+    private val summaryDialog = SummaryDialog()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,6 +39,18 @@ class MainActivity : AppCompatActivity(), HomeView, AddSnackDialog.SnackDialogLi
 
         setupCheckButtons()
         setupList()
+        setupSummaryButton()
+    }
+
+    private fun setupSummaryButton() {
+        summary_button.setOnClickListener{x ->
+            val list = adapter.getSelectedSnacks()
+            if(list.isNotEmpty()){
+                summaryDialog.selectedSnacks = list
+                summaryDialog.show(supportFragmentManager, "summaryDialog")
+            }
+        }
+
     }
 
     private fun setupCheckButtons() {
@@ -91,7 +106,7 @@ class MainActivity : AppCompatActivity(), HomeView, AddSnackDialog.SnackDialogLi
     }
 
     private fun addNewSnack() {
-        addNewSnackDialog.show(supportFragmentManager, "somethings")
+        addNewSnackDialog.show(supportFragmentManager, "NewSnack")
     }
 
     override fun updateSnackList(snack: Snack) {
@@ -112,5 +127,9 @@ class MainActivity : AppCompatActivity(), HomeView, AddSnackDialog.SnackDialogLi
 
     override fun cleanSnackList() {
         adapter.clearItems()
+    }
+
+    override fun onDialogPositiveClickSummary() {
+        adapter.clearSelectedItems()
     }
 }

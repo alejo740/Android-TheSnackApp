@@ -68,5 +68,7 @@ class AddSnackDialog : DialogFragment() {
 
     interface SnackDialogListener {
         fun onDialogPositiveClick(snack: Snack)
+
+        fun onDialogPositiveClickSummary()
     }
 }
